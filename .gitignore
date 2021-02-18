@@ -5,3 +5,4 @@ __pycache__
 /static
 .DS_Store
 *.PNG
+local_settings.py
