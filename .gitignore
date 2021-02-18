@@ -3,6 +3,6 @@
 /.vscode
 __pycache__
 /static
+/media
 .DS_Store
-*.PNG
 local_settings.py

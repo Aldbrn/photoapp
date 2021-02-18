@@ -1,11 +1,13 @@
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.models import User
+from .models import Photo
 
 # Create your views here.
 
 
 def index(request):
-    return render(request, "app/index.html", {})
+    photos = Photo.objects.all().order_by("-created_at")
+    return render(request, "app/index.html", {"photos": photos})
 
 
 def users_detail(request, pk):
