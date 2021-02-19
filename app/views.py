@@ -5,7 +5,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_POST
 from django.contrib import messages
-from .models import Photo
+from .models import Photo, Category
 from .forms import PhotoForm
 
 # Create your views here.
@@ -63,3 +63,9 @@ def photos_delete(request, pk):
     photo = get_object_or_404(Photo, pk=pk, user=request.user)
     photo.delete()
     return redirect("users_detail", request.user.id)
+
+
+def photos_category(request, category):
+    category = get_object_or_404(Category, title=category)
+    photos = Photo.objects.filter(category=category).order_by("-created_at")
+    return render(request, "app/index.html", {"photos": photos, "category": category})
