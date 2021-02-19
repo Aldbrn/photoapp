@@ -1,11 +1,7 @@
-{% extends "app/base.html" %}
+{% extends 'app/base.html' %}
 
 {% block content %}
 
-<h2>トップページ</h2>
+{% include "app/photos_list.html" %}
 
-{% for photo in photos %}
-<img src="{{ photo.image.url }}" class="photo-img">
-{% endfor %}
-
-{% endblock  %}
+{% endblock %}
