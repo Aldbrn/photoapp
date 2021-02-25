@@ -142,7 +142,7 @@ LOGIN_REDIRECT_URL = "index"
 
 LOGOUT_REDIRECT_URL = "index"
 
-STATICFILES_STORAGE = "whitenoise.django.GzipManifestStaticFilesStorage"
+STATICFILES_STORAGE = "django.contrib.staticfiles.storage.StaticFilesStorage"
 
 try:
     from .local_settings import *
