@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/3.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
-import django_heroku
+
 import os
 from pathlib import Path
 
@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "8h=-h@b$j3p*ax9vc2%h=@lc-m4k&ww$4@6j2^#89l7f#g94er"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -139,4 +139,12 @@ LOGIN_REDIRECT_URL = "index"
 
 LOGOUT_REDIRECT_URL = "index"
 
-django_heroku.settings(locals())
+try:
+    from .local_settings import *
+except ImportError:
+    pass
+
+if not DEBUG:
+    import django_heroku
+
+    django_heroku.settings(locals())
