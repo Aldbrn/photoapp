@@ -1,9 +1,8 @@
 *.pyc
 *.swp
 *~
+media
 /.vscode
 __pycache__
-*.jpg
-*.PNG
 .DS_Store
 local_settings.py
