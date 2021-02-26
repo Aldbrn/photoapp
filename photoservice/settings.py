@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "django_cleanup",
     "app.apps.AppConfig",
+    "cloudinary",
+    "cloudinary_storage",
 ]
 
 MIDDLEWARE = [
@@ -153,3 +155,11 @@ if not DEBUG:
     import django_heroku
 
     django_heroku.settings(locals())
+
+CLOUDINARY_STORAGE = {
+    "CLOUD_NAME": os.environ["CLOUD_NAME"],
+    "API_KEY": os.environ["API_KEY"],
+    "API_SECRET": os.environ["API_SECRET"],
+}
+
+DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
